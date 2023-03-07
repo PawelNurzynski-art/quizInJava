@@ -26,3 +26,8 @@ spring:
     user: sa
     password:
     driverClassName: org.h2.Driver
+  thymeleaf:
+    enabled: true
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
