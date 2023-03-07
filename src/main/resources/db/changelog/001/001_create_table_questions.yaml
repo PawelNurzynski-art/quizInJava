@@ -1,0 +1,44 @@
+databaseChangeLog:
+  - changeSet:
+      id: 001_create_questions_table
+      author: pawel
+      changes:
+        - createTable:
+            tableName: questions
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: question_text
+                  type: varchar(60)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: option_a
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: option_b
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: option_c
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: option_d
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: correct_answer
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
