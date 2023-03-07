@@ -5,6 +5,7 @@ import com.pawel.quizInJava.repository.QuestionRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
 
@@ -24,5 +25,9 @@ public class QuestionService {
             question = questionRepository.findRandomQuestion();
         } while (!askedQuestions.add(question.getId()) && askedQuestions.size() < questionRepository.count());
         return question;
+    }
+
+    public Optional<QuestionEntity> getQuestionById(UUID id) {
+        return questionRepository.findById(id);
     }
 }
