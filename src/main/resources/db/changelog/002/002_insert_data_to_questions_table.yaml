@@ -1,0 +1,33 @@
+databaseChangeLog:
+  - changeSet:
+      id: 002_insert_data_to_questions_table
+      author: pawel
+      changes:
+        - loadData:
+            file: 002/002_data_to_questions_table.csv
+            relativeToChangelogFile: true
+            tableName: questions
+            encoding: UTF-8
+            separator: ','
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+              - column:
+                  name: question_text
+                  type: varchar(60)
+              - column:
+                  name: option_a
+                  type: varchar(20)
+              - column:
+                  name: option_b
+                  type: varchar(20)
+              - column:
+                  name: option_c
+                  type: varchar(20)
+              - column:
+                  name: option_d
+                  type: varchar(20)
+              - column:
+                  name: correct_answer
+                  type: varchar(20)

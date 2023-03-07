@@ -2,6 +2,6 @@ databaseChangeLog:
   - include:
       relativeToChangelogFile: true
       file: 001/001_create_questions_table.yaml
-#  - include:
-#      relativeToChangelogFile: true
-#      file: 002/002_insert_data_to_question_table.yaml
+  - include:
+      relativeToChangelogFile: true
+      file: 002/002_insert_data_to_questions_table.yaml
