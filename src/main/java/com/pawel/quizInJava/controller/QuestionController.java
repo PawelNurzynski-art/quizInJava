@@ -25,7 +25,10 @@ public class QuestionController {
     @PostMapping("/{id}")
     public boolean checkAnswer(@RequestParam UUID questionId, @RequestParam String answer) {
         Optional<QuestionEntity> question = questionService.getQuestionById(questionId);
-        return question.getCorrectAnswer().equals(answer);
+        if (question.isPresent()) {
+            return question.get().getCorrectAnswer().equals(answer);
+        } else {
+            return false;
+        }
     }
-
 }
