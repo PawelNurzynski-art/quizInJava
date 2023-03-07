@@ -19,10 +19,10 @@ spring:
     show-sql: true
   main:
     web-application-type: servlet
-#  liquibase:
-#    enabled: true
-#    change-log: classpath:db/changelog/db.changelog-master.yaml
-#    url: jdbc:h2:mem:memDb
-#    user: sa
-#    password:
-#    driverClassName: org.h2.Driver
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+    url: jdbc:h2:mem:memDb
+    user: sa
+    password:
+    driverClassName: org.h2.Driver
