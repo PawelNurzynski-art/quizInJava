@@ -43,6 +43,7 @@ public class QuestionController {
         mav.setViewName("question");
 
         return mav;
+        // page url http://localhost:8080/question
     }
 
 }
