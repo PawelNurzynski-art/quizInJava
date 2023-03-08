@@ -2,12 +2,14 @@ package com.pawel.quizInJava.controller;
 
 import com.pawel.quizInJava.entity.QuestionEntity;
 import com.pawel.quizInJava.service.QuestionService;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.Optional;
-import java.util.UUID;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 @RestController
+//@Controller
 @RequestMapping("/question")
 public class QuestionController {
 
@@ -18,17 +20,29 @@ public class QuestionController {
     }
 
     @GetMapping("")
-    public QuestionEntity getQuestion() {
-        return questionService.getRandomQuestion();
+    public ModelAndView getQuestion(Model model) {
+        ModelAndView mav = new ModelAndView();
+
+        // get random question from database
+        QuestionEntity question = questionService.getRandomQuestion();
+
+        String questionText = question.getQuestionText();
+        String optionA = question.getOptionA();
+        String optionB = question.getOptionB();
+        String optionC = question.getOptionC();
+        String optionD = question.getOptionD();
+        String correctAnswer = question.getCorrectAnswer();
+
+        // put question in model
+        mav.addObject("questionText", questionText);
+        mav.addObject("optionA", optionA);
+        mav.addObject("optionB", optionB);
+        mav.addObject("optionC", optionC);
+        mav.addObject("optionD", optionD);
+        mav.addObject("correctAnswer", correctAnswer);
+        mav.setViewName("question");
+
+        return mav;
     }
 
-    @PostMapping("/{id}")
-    public boolean checkAnswer(@RequestParam UUID questionId, @RequestParam String answer) {
-        Optional<QuestionEntity> question = questionService.getQuestionById(questionId);
-        if (question.isPresent()) {
-            return question.get().getCorrectAnswer().equals(answer);
-        } else {
-            return false;
-        }
-    }
 }

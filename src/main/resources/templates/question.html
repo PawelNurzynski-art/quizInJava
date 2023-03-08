@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+    <title>Quiz App</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<h1>Simple quiz</h1>
+<h3 th:text="${questionText}">Check the question mapping!</h3>
+<p>A. <span th:text="${optionA}"></span></p>
+<p>B. <span th:text="${optionB}"></span></p>
+<p>C. <span th:text="${optionC}"></span></p>
+<p>D. <span th:text="${optionD}"></span></p>
+<details>
+    <summary>Click to see the correct answer.</summary>
+    <p>Correct answer: <strong><span th:text="${correctAnswer}"></span></strong>.</p>
+</details>
+</body>
+</html>
